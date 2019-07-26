@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { TextInput, View, Image, Button, ScrollView } from 'react-native';
+import { TextInput, View, Image, Button, ScrollView, Text, TouchableOpacity } from 'react-native';
 
 export default class pages extends Component {
   constructor(props){
@@ -15,7 +15,7 @@ export default class pages extends Component {
     }
 
     searchButton = () => {
-      fetch( "http://localhost:4545/dic" + (this.titulo),{
+      fetch( 'http://192.168.0.110:4545/dic/' + (this.titulo),{
         method: 'GET'
       }).then((resp) => {
           return resp.json();
@@ -35,7 +35,9 @@ export default class pages extends Component {
       return(
         <View key = {jsonNota.titulo}>
           <View style={{flexDirection: 'row'}}>
-            <Text style={{color: 'blue'}}>{jsonNota.titulo} | </Text>
+            <Text style={{color: 'blue', fontSize: 30, backgroundColor: 'gray', height: 50, width: 350, textAlign: 'center'}}>
+              {jsonNota.titulo} 
+            </Text>
           </View>
         </View>
       )}
@@ -45,10 +47,14 @@ export default class pages extends Component {
       <View style={{flex: 1, backgroundColor: '#fff'}}>
           <Image source={require('../image/pesquisar.png')}/>
           <View style={{alignItems: 'center', marginTop: 10}}>
-            <TextInput style={{height: 50, width: 350, fontSize: 23, backgroundColor: "gray", borderRadius: 10}}/>
+            <TextInput style={{height: 50, width: 350, fontSize: 23, backgroundColor: "gray", borderRadius: 10}} 
+            onChangeText={(text)=>{this.titulo = text}}
+            value = {this.titulo}/>
             <Button title={'Buscar'} onPress={this.searchButton}/>
           </View>
-          <ScrollView>{notaDisplay}</ScrollView>
+          <TouchableOpacity style={{justifyContent: 'center', alignItems: 'center', margin: 50}}>
+            <ScrollView>{notaDisplay}</ScrollView>
+          </TouchableOpacity>
       </View>
     )
   }
