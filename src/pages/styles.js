@@ -22,3 +22,8 @@ export const ButtonMain = styled.TouchableOpacity`
     width: 340;
     font-size: 23
 `;
+
+export const Titulo = styled.Text`
+    font-size: 50;
+    color: red
+`;

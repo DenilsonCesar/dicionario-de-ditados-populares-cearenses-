@@ -4,6 +4,7 @@ import Main from '../pages/main'
 import SpleshScreen from '../pages/SpleshScreen'
 import Search from '../pages/search'
 import CompleteDictionary from '../pages/completeDictionary'
+import MostarPesquisa from '../pages/mostrarPesquisa'
 
 const App = createStackNavigator({
     SpleshScreen: { screen : SpleshScreen, 
@@ -12,7 +13,8 @@ const App = createStackNavigator({
         }},
     Main: Main,
     Search: Search,
-    CompleteDictionary: CompleteDictionary
+    CompleteDictionary: CompleteDictionary,
+    MostarPesquisa: MostarPesquisa
 })
 
 export default App
